@@ -1,0 +1,136 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/health": {
+      "get": {
+        "operationId": "AppController_healthCheck",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "health"
+        ]
+      }
+    },
+    "/api/authentication/sign-in": {
+      "post": {
+        "operationId": "AuthenticationController_signIn",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignInDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/authentication/sign-up": {
+      "post": {
+        "operationId": "AuthenticationController_signUp",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUpDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "info": {
+    "title": "Interview API",
+    "description": "desc",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "JSON Web Token Authorization": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http",
+        "name": "JSON Web Token",
+        "description": "Enter JSON Web Token",
+        "in": "header"
+      }
+    },
+    "schemas": {
+      "SignInDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "test@example.com",
+            "description": "This is a required property"
+          },
+          "authToken": {
+            "type": "string",
+            "example": "",
+            "description": "This is a optional property"
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "SignUpDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "test@example.com",
+            "description": "This is a required property"
+          },
+          "displayName": {
+            "type": "string",
+            "example": "test@example.com",
+            "description": "This is a required property"
+          },
+          "socialId": {
+            "type": "string",
+            "example": "1234567890",
+            "description": "This is a required property"
+          },
+          "authToken": {
+            "type": "string",
+            "example": "",
+            "description": "This is a optional property"
+          },
+          "image": {
+            "type": "string",
+            "example": "",
+            "description": "This is a optional property"
+          }
+        },
+        "required": [
+          "email",
+          "displayName",
+          "socialId"
+        ]
+      }
+    }
+  }
+}
